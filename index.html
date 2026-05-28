@@ -671,11 +671,12 @@ src="https://www.facebook.com/tr?id=999919112410623&ev=PageView&noscript=1"
     "#hero-wa-btn, #main-wa-btn, #float-wa-btn, #nav-wa"
   ).forEach(el => {
     el.href = waURL;
-    el.addEventListener('click', function() {
-      // 🎯 Evento Contact → se dispara cuando alguien hace clic en WhatsApp
-      fbq('track', 'Contact');
-      console.log('✅ Meta Pixel: Contact event fired');
-    });
+   el.addEventListener('click', function() {
+  // 🎯 Eventos pixel → se disparan cuando alguien hace clic en WhatsApp
+  fbq('track', 'Contact');
+  fbq('track', 'Lead'); // ← NUEVO: necesario para que Meta optimice la campaña
+  console.log('✅ Meta Pixel: Contact + Lead events fired');
+});
   });
 
   // 🎯 Evento ViewContent → se dispara cuando carga la landing
