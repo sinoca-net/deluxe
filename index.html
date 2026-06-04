@@ -763,19 +763,14 @@ src="https://www.facebook.com/tr?id=999919112410623&ev=PageView&noscript=1"
   // ─── ASIGNA URL + DISPARA TODOS LOS EVENTOS PIXEL en cada botón ───
   // Usamos la clase .wa-btn para capturar TODOS los botones (nav, hero, bono, cta, float)
   // + también el #nav-wa que no tiene la clase en el nav original
-  document.querySelectorAll(".wa-btn, #nav-wa").forEach(el => {
+document.querySelectorAll(".wa-btn").forEach(el => {
     el.href = waURL;
     el.addEventListener('click', function() {
-      fbq('track', 'Contact');
-      fbq('track', 'Lead');
-      fbq('track', 'InitiateCheckout');
-      fbq('trackCustom', 'clickwhatsapp');   // ← dispara en TODOS los botones
-      fbq('trackCustom', 'BonoClic100');     // ← actualizado a 100%
-      console.log('✅ Pixel: Contact + Lead + InitiateCheckout + clickwhatsapp + BonoClic100 | Botón:', el.id || el.className);
+      fbq('trackCustom', 'clickwhatsapp');
+      console.log('✅ Pixel: clickwhatsapp disparado');
     });
   });
 
-  // 🎯 ViewContent específico para bono → se dispara al cargar la landing
   fbq('track', 'ViewContent', {
     content_name: 'Bono 100% Primera Carga - Delux Club',
     content_category: 'Promotion',
